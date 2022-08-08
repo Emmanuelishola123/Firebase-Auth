@@ -82,6 +82,9 @@ function Form({ register }) {
   return (
     <>
       <Box>
+      <Typography variant="p" component='div' textAlign='center'>
+          {register ? 'Register':'Login'}
+          </Typography>
         <Grid container spacing={3}>
           <Grid item xs={12} md={5} lg={6}>
             <Button
@@ -105,7 +108,7 @@ function Form({ register }) {
           </Grid>
         </Grid>
       </Box>
-      <Box>OR</Box>
+      <Typography textAlign='center'>OR</Typography>
       <Box>
         <form
           onSubmit={

@@ -4,8 +4,8 @@ import { Controller, useForm } from "react-hook-form";
 import useStyles from "../assets/styles";
 import Layout from "../components/Layout";
 import { motion } from 'framer-motion'
-function ResetPassword() {
 
+function ResetPassword() {
     const containerVariants = {
         hidden: {
           opacity: 0,
@@ -30,6 +30,7 @@ function ResetPassword() {
           transition: { ease: 'easeInOut' }
         }
       };
+      
   const {
     handleSubmit,
     control,

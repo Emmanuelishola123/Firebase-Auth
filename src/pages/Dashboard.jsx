@@ -1,19 +1,26 @@
-import { Container, Grid, Typography } from "@mui/material";
-import React, { useContext, useEffect } from "react";
-import useStyles from "../assets/styles";
-import Form from "../components/Form";
+import React, { useContext, useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { motion } from "framer-motion";
 import NoteContext from "../context/NoteContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebaseConfig";
+import { Typography } from "@mui/material";
 
-function Login() {
+const breakpointColumnsObj = {
+  default: 3,
+  1100: 2,
+  700: 1,
+};
+
+function Dashboard() {
   const { state } = useContext(NoteContext);
   const { user } = state;
   const navigate = useNavigate();
 
+  
   useEffect(() => {
-    if (user) navigate("/");
+    if (!user) navigate("/login");
   }, [user]);
 
   const containerVariants = {
@@ -40,30 +47,21 @@ function Login() {
       transition: { ease: "easeInOut" },
     },
   };
-  const classes = useStyles();
+
   return (
-    <Layout showSidebar={false}>
+    <Layout>
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         exit="exit"
       >
-        <Container>
-          <Grid container className={classes.container}>
-            <Grid item xs={12} md={6}>
-              <Typography variant="h6" component="p">
-                Login to your Account
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Form register={false} />
-            </Grid>
-          </Grid>
-        </Container>
+        <Typography variant="h2">
+          Welcome To Your Dashboard {user?.displayName || user?.email}
+        </Typography>
       </motion.div>
     </Layout>
   );
 }
 
-export default Login;
+export default Dashboard;

@@ -17,7 +17,7 @@ import {
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NoteContext from "../context/NoteContext";
-import CreateNoteForm from "./CreateNoteForm";
+
 
 function Nav() {
   const navigate = useNavigate();
@@ -33,9 +33,7 @@ function Nav() {
     setAnchorEl(null);
   };
 
-  const handleCreateForm = () => {
-    return dispatch({ type: "OPEN_MODAL", payload: <CreateNoteForm /> });
-  };
+
 
   const handleLogout = () => {
     dispatch({ type: "OPEN_DIALOG", payload: "Logout" });
@@ -51,11 +49,11 @@ function Nav() {
               variant="h5"
               component="div"
               color="inherit"
-              sx={{ display: "flex", ml: 2 }}
+              sx={{ display: "flex", alignItems: 'center', ml: 2 }}
             >
-              <Typography variant="h4" component="div" color="error">
+              <Box color="error">
                Fire
-              </Typography>
+              </Box>
              baseAuth
             </Typography>
           </Box>
@@ -63,13 +61,7 @@ function Nav() {
 
           {user ? (
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Button
-                onClick={handleCreateForm}
-                variant="outlined"
-                color="secondary"
-              >
-                Create Note <AddCircleOutline />
-              </Button>
+            
               <Tooltip title="Account Menu">
                 <IconButton
                   onClick={handleClick}

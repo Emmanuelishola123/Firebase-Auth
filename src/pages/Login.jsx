@@ -1,12 +1,13 @@
 import { Container, Grid, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
+import useStyles from "../assets/styles";
 import Form from "../components/Form";
 import Layout from "../components/Layout";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import NoteContext from "../context/NoteContext";
+import { Navigate, useNavigate } from "react-router-dom";
 
-function Register() {
+function Login() {
   const { state } = useContext(NoteContext);
   const { user } = state;
   const navigate = useNavigate();
@@ -39,6 +40,7 @@ function Register() {
       transition: { ease: "easeInOut" },
     },
   };
+  const classes = useStyles();
   return (
     <Layout showSidebar={false}>
       <motion.div
@@ -47,16 +49,17 @@ function Register() {
         animate="visible"
         exit="exit"
       >
-        <Container sx={{ md: { mx: "10vw" } }}>
-          <Grid container sx={{ mx: "auto" }}>
-            <Grid item xs={12} md={6}>
-              <Typography variant="h6" component="p">
-                Create an Account
-              </Typography>
+        <Container>
+          <Grid container className={classes.container}>
+            <Grid item xs={0} md={3}>
+             
             </Grid>
             <Grid item xs={12} md={6}>
-              <Form register={true} />
+              <Form register={false} />
             </Grid>
+            <Grid item xs={0} md={3}>
+             
+             </Grid>
           </Grid>
         </Container>
       </motion.div>
@@ -64,4 +67,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Login;

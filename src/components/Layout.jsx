@@ -3,7 +3,7 @@ import React, { useContext, useMemo } from "react";
 import NoteContext from "../context/NoteContext";
 import AlertBox from "./AlertBox";
 import ConfirmationDialog from "./ConfirmationDialog";
-import ModalDiag from "./ModalDiag";
+
 import Nav from "./Nav";
 import Sidebar from "./Sidebar";
 
@@ -45,7 +45,7 @@ function Layout({ children, showSidebar }) {
     <ThemeProvider theme={theme}>
       <Nav />
       <Sidebar children={children} showSidebar={showSidebar} />
-      <ModalDiag />
+  
       <ConfirmationDialog />
       <AlertBox />
     </ThemeProvider>

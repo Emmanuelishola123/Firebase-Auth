@@ -17,8 +17,6 @@ import {
   NotesOutlined,
 } from "@mui/icons-material";
 import { Switch } from "@mui/material";
-import CreateNoteForm from "./CreateNoteForm";
-import CustomTheme from "./CustomTheme";
 import { useNavigate, useLocation } from "react-router-dom";
 import NoteContext from "../context/NoteContext";
 import { getAuth, signOut } from "firebase/auth";
@@ -33,12 +31,7 @@ export default function Sidebar({ children, showSidebar = true }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const openModalNewNote = () => {
-    return dispatch({ type: "OPEN_MODAL", payload: <CreateNoteForm /> });
-  };
-  const openModalCustomTheme = () => {
-    return dispatch({ type: "OPEN_MODAL", payload: <CustomTheme /> });
-  };
+ 
   const toggleDarkMode = () => {
     if (mode === "dark") {
       return dispatch({ type: "DARKMODE_OFF" });
@@ -84,7 +77,7 @@ export default function Sidebar({ children, showSidebar = true }) {
                 </ListItemButton>
               </ListItem>
 
-              <ListItem disablePadding onClick={openModalNewNote}>
+              <ListItem disablePadding>
                 <ListItemButton sx={{ flex: "flex", alignItems: "center" }}>
                   <ListItemIcon>
                     <AddCircleOutline />
@@ -93,7 +86,7 @@ export default function Sidebar({ children, showSidebar = true }) {
                 </ListItemButton>
               </ListItem>
 
-              <ListItem disablePadding onClick={openModalCustomTheme}>
+              <ListItem disablePadding >
                 <ListItemButton sx={{ flex: "flex", alignItems: "center" }}>
                   <ListItemIcon>
                     <Colorize />
